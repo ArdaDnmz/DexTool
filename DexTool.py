@@ -1,5 +1,6 @@
 import time
 import random
+import webbrowser
 
 #Versiyon, ve başlangıçtaki değişken bilgileri yazar
 versiyon = "0.4"
@@ -15,11 +16,13 @@ Versiyon:""", versiyon)
 def menu0():
   print("== ANA MENÜ ==\n")
   print("Yapabileceklerin aşağıda listelenmiştir.")
-  print("Oyun Oyna: 1\nÇıkış Yap: 2\n")
+  print("[1] Oyun Oyna\n[2] Bağlantılar\n[3] Çıkış Yap\n")
   menu0 = input("Cevabınızı bekliyorum.\n")
   if menu0 == "1":
     menu01()
   elif menu0 == "2":
+    menu02()
+  elif menu0 == "3":
     print("Program kendini 3 saniye içerisinde kapatacaktır.")
     print("3")
     time.sleep(1)
@@ -34,10 +37,10 @@ def menu01():
   print("""
 == OYUN MENÜSÜ ==
 
-Zar At: 1
-Taş Kağıt Makas Oyna: 2
-Sayı Tahmin Et: 3
-Geri Dön:4
+[1] Zar At
+[2] Taş Kağıt Makas Oyna
+[3] Sayı Tahmin Et
+[4] Geri Dön
 """)
   menu01 = input("Cevabınızı bekliyorum.\n")
   if menu01 == "1":
@@ -47,6 +50,18 @@ Geri Dön:4
   elif menu01 == "3":
     menu013()
   elif menu01 == "4":
+    menu0()
+
+#Bağlantı Menüsü
+def menu02():
+  print("== BAĞLANTILAR ==\n")
+  print("[1] GitHub\n[2] Geri Dön")
+  sMenu02 = input("Cevabınızı bekliyorum.\n")
+  if sMenu02 == "1":
+    githubUrl = 'https://github.com/ArdaDnmz'
+    webbrowser.open_new_tab(githubUrl)
+    menu02()
+  elif sMenu02 == "2":
     menu0()
 #Oyun Oyna/Zar At
 def menu011():
@@ -67,9 +82,9 @@ def menu012():
   durum = True;
   while durum:
     print("Seçim yapınız");
-    print("1 : Taş");
-    print("2 : Kağıt");
-    secim = input("3 : Makas\n");
+    print("[1] Taş");
+    print("[2] Kağıt");
+    secim = input("[3] Makas\n");
     botsecim = random.randint(1,3);
     #Berabere Durumları
     if secim == "1" and botsecim == 1:
@@ -178,9 +193,9 @@ def menu013():
   while denemeHakkı == None:
     zorluk = input("""
   Zorluk Seçiniz
-  Kolay Mod: 1
-  Normal Mod: 2
-  Zor Mod: 3
+  [1] Kolay Mod
+  [2] Normal Mod
+  [3] Zor Mod
   """)
       
   #Kolay Mod Durumları
@@ -311,5 +326,7 @@ def menu013():
             programSayiTahmin = True
             menu01()
 
+
+#Program başlangıç
 menu0()
 
